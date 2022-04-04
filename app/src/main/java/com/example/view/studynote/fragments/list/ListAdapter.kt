@@ -11,11 +11,11 @@ import com.example.view.studynote.data.models.Priority
 import com.example.view.studynote.data.models.ToDoData
 import com.example.view.studynote.databinding.RowLayoutBinding
 import com.example.view.studynote.databinding.RowLayoutBindingImpl
-import kotlinx.android.synthetic.main.row_layout.view.*
+//import kotlinx.android.synthetic.main.row_layout.view.*
 
 class ListAdapter: RecyclerView.Adapter<ListAdapter.MyViewHolder>() {
 
-    var dataList = emptyList<ToDoData>()
+   private var dataList = emptyList<ToDoData>()
 
     class MyViewHolder(private val binding: RowLayoutBinding) : RecyclerView.ViewHolder(binding.root){
 

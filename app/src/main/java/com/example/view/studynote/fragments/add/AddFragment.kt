@@ -12,28 +12,38 @@ import com.example.view.studynote.R
 import com.example.view.studynote.data.models.Priority
 import com.example.view.studynote.data.models.ToDoData
 import com.example.view.studynote.data.viewmodel.ToDoViewModel
+import com.example.view.studynote.databinding.FragmentAddBinding
+import com.example.view.studynote.databinding.FragmentUpdateBinding
 import com.example.view.studynote.fragments.SharedViewModel
-import kotlinx.android.synthetic.main.fragment_add.*
-import kotlinx.android.synthetic.main.fragment_add.view.*
+//import kotlinx.android.synthetic.main.fragment_add.*
+//import kotlinx.android.synthetic.main.fragment_add.view.*
 
 
 class AddFragment : Fragment() {
 
     private val mToDoViewModel: ToDoViewModel by viewModels()
     private val mSharedViewModel: SharedViewModel by viewModels()
+    private var _binding: FragmentAddBinding?=null
+    private val binding get() =_binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        val view = inflater.inflate(R.layout.fragment_add, container, false)
-        // 메뉴 세팅
+        _binding = FragmentAddBinding.inflate(layoutInflater,container,false)
+
         setHasOptionsMenu(true)
 
-        view.priorities_spinner.onItemSelectedListener = mSharedViewModel.listener
-
-        return view
+        binding.prioritiesSpinner.onItemSelectedListener=mSharedViewModel.listener
+        return binding.root
+//        // Inflate the layout for this fragment
+//        val view = inflater.inflate(R.layout.fragment_add, container, false)
+//        // 메뉴 세팅
+//        setHasOptionsMenu(true)
+//
+//        view.priorities_spinner.onItemSelectedListener = mSharedViewModel.listener
+//
+//        return view
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -48,9 +58,9 @@ class AddFragment : Fragment() {
     }
 
     private fun insertDataToDb() {
-        val mTitle = title_et.text.toString()
-        val mPriority = priorities_spinner.selectedItem.toString()
-        val mDescription = description_et.text.toString()
+        val mTitle = binding.titleEt.text.toString()
+        val mPriority = binding.prioritiesSpinner.selectedItem.toString()
+        val mDescription = binding.descriptionEt.text.toString()
 
         val validation = mSharedViewModel.verifyDataFromUser(mTitle, mDescription)
         if(validation){
@@ -69,4 +79,8 @@ class AddFragment : Fragment() {
 
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding=null
+    }
 }

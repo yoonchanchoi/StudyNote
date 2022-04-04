@@ -13,7 +13,7 @@ import com.example.view.studynote.R
 import com.example.view.studynote.data.viewmodel.ToDoViewModel
 import com.example.view.studynote.databinding.FragmentListBinding
 import com.example.view.studynote.fragments.SharedViewModel
-import kotlinx.android.synthetic.main.fragment_list.view.*
+//import kotlinx.android.synthetic.main.fragment_list.view.*
 
 
 class ListFragment : Fragment() {
