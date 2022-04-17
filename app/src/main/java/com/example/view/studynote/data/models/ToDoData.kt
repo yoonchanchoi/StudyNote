@@ -6,7 +6,7 @@ import androidx.room.PrimaryKey
 import com.example.view.studynote.data.models.Priority
 import kotlinx.parcelize.Parcelize
 //import kotlinx.android.parcel.Parcelize
-
+//데이터관련
 @Entity(tableName = "todo_table")
 @Parcelize
 data class ToDoData(
